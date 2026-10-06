@@ -14,12 +14,27 @@ Il ne s'agit pas d'une application web emballée dans une WebView : pas de HTML,
 - Le moteur Android est une dépendance publiée via **JitPack** et référencée par les projets PhpNitro ; il n'est pas copié dans chaque application.
 - Les composants PHP sont distribués séparément avec **Composer**, afin que chaque application ne récupère que les packages dont elle a besoin.
 
-## Démarrer
+## Démarrage rapide
+
+**Prérequis :** PHP ≥ 8.1 + Composer. Android SDK + Gradle ≥ 9.1 + JDK sont nécessaires uniquement pour builder l'APK — `phpx build:android` les installe tout seul si besoin. Voir [`docs/mobile-builds.md`](https://github.com/phpnitro/phpnitro/blob/main/docs/mobile-builds.md).
 
 ```bash
-composer require phpnitro/ui
+curl -fsSL https://github.com/phpnitro/phpnitro/releases/latest/download/phpx.phar -o /usr/local/bin/phpx
+chmod +x /usr/local/bin/phpx
+```
+
+Sur Linux, vous pouvez aussi installer l'alternative qui embarque PHP et tout ce que `phpx run` demande pour ouvrir une vraie fenêtre desktop (Python/GTK4/Cairo) : rien à installer soi-même.
+
+```bash
+sudo snap install phpx
+```
+
+```bash
 phpx new mon-app
-cd mon-app && composer install && phpx serve
+cd mon-app
+composer install
+phpx make:page Home
+phpx serve
 ```
 
 ## Packages
